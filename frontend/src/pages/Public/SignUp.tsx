@@ -37,6 +37,7 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const resetForm = () => {
     setName("");
@@ -47,6 +48,7 @@ const SignUp = () => {
 
   const SignUpHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
     try {
       if (password != confirmPassword) {
         window.alert("Password doesn't match");
@@ -60,10 +62,15 @@ const SignUp = () => {
       );
 
       console.log(data);
+      toast.success(data.message);
+      setLoading(false);
+
+      resetForm();
     } catch (error) {
       console.log(error);
+      toast.error(error.response.data.error);
+      setLoading(false);
     }
-    resetForm();
   };
 
   return (
@@ -131,9 +138,11 @@ const SignUp = () => {
                   <RememberMe onClick={() => {}} />
                 </div>
                 {/* Sign-up button */}
-                <Button variant="solid" color="primary" type="submit">
-                  Sign Up
-                </Button>
+                {!loading ? (
+                  <Button variant="solid" color="primary" type="submit">
+                    Sign Up
+                  </Button>
+                ) : null}
               </form>
             </div>
           </div>

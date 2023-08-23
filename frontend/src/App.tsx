@@ -10,7 +10,7 @@ import { useLoading } from "./hooks/useLoader";
 // Import Loader
 import Loader from "./components/shared/Loader";
 
-//Import react toastify
+// Import Toastify
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -30,10 +30,7 @@ function App() {
     <>
       {/* Display the `Loader` component when `loading` is `true` */}
       {loading && <Loader />}
-
-      {/* Create the `ToastContainer` component that is required for react-toastify to work */}
       <ToastContainer />
-
       {/* Provide routing capabilities using `RouterProvider` */}
       <RouterProvider router={Router} />
     </>

@@ -28,7 +28,7 @@ const Dashboard = () => {
   return (
     <main className="flex flex-1 overflow-hidden">
       {/* Primary Column */}
-      {/* <PrimaryColumn /> */}
+      <PrimaryColumn />
       {/* Secondary Column : Sidebar */}
       <SecondaryColumn>
         {/* Search Bar Section */}
